@@ -1,0 +1,11 @@
+{
+  "name": "umireact",
+  "version": "1.0.0",
+  "description": "Umi3+React project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard",
+  "license": "ISC"
+}
