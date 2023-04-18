@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from '/usr/local/lib/node_modules/umi/node_modules/@umijs/runtime';
+import { ApplyPluginsType } from '/Users/renxianggao/Desktop/UmiReact/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
@@ -14,6 +14,11 @@ export function getRoutes() {
   {
     "path": "/login",
     "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/login').default,
+    "exact": true
+  },
+  {
+    "path": "/goods",
+    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/goods').default,
     "exact": true
   },
   {
