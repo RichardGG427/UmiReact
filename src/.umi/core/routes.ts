@@ -7,45 +7,51 @@ import { plugin } from './plugin';
 export function getRoutes() {
   const routes = [
   {
-    "path": "/",
-    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/index').default,
-    "exact": true
-  },
-  {
     "path": "/login",
     "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/login').default,
     "exact": true
   },
   {
-    "path": "/goods",
-    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/goods').default,
-    "exact": true
-  },
-  {
-    "path": "/about",
-    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/about').default,
-    "wrappers": [require('@/wrappers/auth').default],
-    "exact": true
-  },
-  {
-    "path": "/users",
-    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/_layout').default,
+    "path": "/",
+    "component": require('/Users/renxianggao/Desktop/UmiReact/src/layout/index').default,
     "routes": [
       {
-        "path": "/users/",
-        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/index').default,
+        "path": "/",
+        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/index').default,
         "exact": true
       },
       {
-        "path": "/users/:name",
-        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/[name].js').default,
+        "path": "/goods",
+        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/goods').default,
+        "exact": true
+      },
+      {
+        "path": "/about",
+        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/about').default,
+        "wrappers": [require('@/wrappers/auth').default],
+        "exact": true
+      },
+      {
+        "path": "/users",
+        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/_layout').default,
+        "routes": [
+          {
+            "path": "/users/",
+            "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/index').default,
+            "exact": true
+          },
+          {
+            "path": "/users/:name",
+            "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/users/[name].js').default,
+            "exact": true
+          }
+        ]
+      },
+      {
+        "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/notfound').default,
         "exact": true
       }
     ]
-  },
-  {
-    "component": require('/Users/renxianggao/Desktop/UmiReact/src/pages/notfound').default,
-    "exact": true
   }
 ];
 
