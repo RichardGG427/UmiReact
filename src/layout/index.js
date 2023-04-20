@@ -2,12 +2,30 @@ import React, { Component } from "react";
 import styles from "./index.css";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import logo from "../../public/logo.png";
+import { Link } from "umi";
+import menuList from "../../mock/menu"
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 export default class index extends Component {
+    state={
+        siderMenu:[]
+    }
+    //init menu data for level 2 menu
+    componentDidMount(){
+        this.setState({
+            siderMenu:menuList[0]
+        })
+    }
+        //click level one to switch level two
+        levelOne =(ind)=>{
+            this.setState({
+                siderMenu:menuList[ind]
+            })
+        }
   render() {
+    const selectedKeys=[this.props.location.pathname]
     return (
       <div>
         <Layout>
@@ -16,12 +34,19 @@ export default class index extends Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={["2"]}
+              //   defaultSelectedKeys={["2"]}
+              selectedKeys={selectedKeys}
               style={{ lineHeight: "64px" }}
             >
-              <Menu.Item key="1">nav 1</Menu.Item>
-              <Menu.Item key="2">nav 2</Menu.Item>
-              <Menu.Item key="3">nav 3</Menu.Item>
+              <Menu.Item key="/">
+                <Link onClick={()=>this.levelOne(0)} to="/">Homepage</Link>
+              </Menu.Item>
+              <Menu.Item key="/about">
+                <Link onClick={()=>this.levelOne(1)} to="/about">About</Link>
+              </Menu.Item>
+              <Menu.Item key="/goods">
+                <Link onClick={()=>this.levelOne(2)} to="/goods">Goods</Link>
+              </Menu.Item>
             </Menu>
           </Header>
           <Layout className={styles.content}>
@@ -32,56 +57,33 @@ export default class index extends Component {
                 defaultOpenKeys={["sub1"]}
                 style={{ height: "100%", borderRight: 0 }}
               >
-                <SubMenu
-                  key="sub1"
-                  title={
-                    <span>
-                      <Icon type="user" />
-                      subnav 1
-                    </span>
-                  }
-                >
-                  <Menu.Item key="1">option1</Menu.Item>
-                  <Menu.Item key="2">option2</Menu.Item>
-                  <Menu.Item key="3">option3</Menu.Item>
-                  <Menu.Item key="4">option4</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub2"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      subnav 2
-                    </span>
-                  }
-                >
-                  <Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
-                  <Menu.Item key="8">option8</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub3"
-                  title={
-                    <span>
-                      <Icon type="notification" />
-                      subnav 3
-                    </span>
-                  }
-                >
-                  <Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                  <Menu.Item key="12">option12</Menu.Item>
-                </SubMenu>
+
+
+
+                {/* loop render level 2 menu */}
+                {this.state.siderMenu.map(val=>(
+                                    <SubMenu
+                                    key={val.keyValue}
+                                    title={
+                                        <span>
+                                            <Icon type={val.iconType} />
+                                             {val.title}
+                                        </span>
+                                    }
+                                    >
+                                    {val.children?val.children.map(vals=>(
+                                         <Menu.Item key={vals.keyValue}>{vals.title}</Menu.Item>
+                                    )):null}
+                                    </SubMenu>
+                                ))}
               </Menu>
             </Sider>
             <Layout style={{ padding: "0 24px 24px" }}>
-              <Breadcrumb style={{ margin: "16px 0" }}>
+              {/* <Breadcrumb style={{ margin: "16px 0" }}>
                 <Breadcrumb.Item>Home</Breadcrumb.Item>
                 <Breadcrumb.Item>List</Breadcrumb.Item>
                 <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
+              </Breadcrumb> */}
               <Content
                 style={{
                   background: "#fff",
@@ -90,7 +92,7 @@ export default class index extends Component {
                   minHeight: 280,
                 }}
               >
-                Content
+                {this.props.children}
               </Content>
             </Layout>
           </Layout>
