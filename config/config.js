@@ -17,16 +17,39 @@ export default {
   //route configure
   routes: [
     { path: "/login", component: "./login" },
+    { path: "/test", component: "./test" },
     {
       path: "/",
-      component: "../layout/index",
+      component: "../layout",
       routes: [
-        { path: "/", component: "./index" },
+        { path: "/", redirect: "/home", name: "homepage" },
+        { path: "/home", component: "./home", name: "homepage" },
+        {
+          path: "/home/pageview",
+          component: "./home/report/pageview",
+          name: "pageviews number",
+        },
+        {
+          path: "/home/userview",
+          component: "./home/report/userview",
+          name: "userviews number",
+        },
+        {
+          path: "/home/setpage",
+          component: "./home/setting/setpage",
+          name: "page setting",
+        },
+        {
+          path: "/home/setlanguage",
+          component: "./home/setting/setlanguage",
+          name: "language setting",
+        },
 
-        { path: "/goods", component: "./goods" },
+        { path: "/goods", component: "./goods", name: "goods page" },
         {
           path: "/about",
           component: "./about",
+          name: "about page",
           wrappers: ["@/wrappers/auth"],
         },
         {
@@ -37,7 +60,7 @@ export default {
             { path: "/users/:name", component: "./users/[name].js" },
           ],
         },
-        { component: "./notfound" },
+        { component: "./notfound", name: "404 page" },
       ],
     },
   ],

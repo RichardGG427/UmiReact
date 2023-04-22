@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from './notfound.css';
+import {Exception} from 'ant-design-pro';
+import 'ant-design-pro/dist/ant-design-pro.css'; 
+
 
 export default function Page() {
   return (
     <div>
-      <h1 className={styles.title}>Page notfound</h1>
+      <Exception type="404" backText="Back to Homepage" desc="Sorry, the page you visit does not exsit."  redirect='/' />
     </div>
   );
 }
