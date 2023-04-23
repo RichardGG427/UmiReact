@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Login from "ant-design-pro/lib/Login";
-import "ant-design-pro/dist/ant-design-pro.css";
+// import "ant-design-pro/dist/ant-design-pro.css";
 import styles from "./login.css";
+import "ant-design-pro/lib/Login/style/css"
 import logo from "../../public/logo.png";
 const { UserName, Password, Submit } = Login;
 export default class extends Component {
@@ -17,12 +18,12 @@ export default class extends Component {
         <Login onSubmit={this.onSubmit}>
           <UserName
             name="username"
-            placeholder="Richard"
+            placeholder="Username"
             rules={[{ required: true, message: "Please input username" }]}
           />
           <Password
             name="password"
-            placeholder="123456"
+            placeholder="Password"
             rules={[{ required: true, message: "Please input password" }]}
           />
           <Submit>Login</Submit>

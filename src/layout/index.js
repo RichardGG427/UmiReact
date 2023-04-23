@@ -4,8 +4,8 @@ import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import logo from "../../public/logo.png";
 import { Link } from "umi";
 import menuList from "../../mock/menu";
-import "ant-design-pro/dist/ant-design-pro.css";
-import "ant-design-pro/lib/Login/style/css"
+// import "ant-design-pro/dist/ant-design-pro.css";
+// import "ant-design-pro/lib/Login/style/css"
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
