@@ -6,6 +6,7 @@ import dva from 'dva';
 import createLoading from '/Users/renxianggao/Desktop/UmiReact/node_modules/@umijs/plugin-dva/node_modules/dva-loading/dist/index.esm.js';
 import { plugin, history } from '../core/umiExports';
 import ModelGoods0 from '/Users/renxianggao/Desktop/UmiReact/src/models/goods.js';
+import ModelUser1 from '/Users/renxianggao/Desktop/UmiReact/src/models/user.js';
 
 let app:any = null;
 
@@ -29,6 +30,7 @@ export function _onCreate(options = {}) {
     app.use(plugin);
   });
   app.model({ namespace: 'goods', ...ModelGoods0 });
+app.model({ namespace: 'user', ...ModelUser1 });
   return app;
 }
 

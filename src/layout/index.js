@@ -1,15 +1,25 @@
 import React, { Component } from "react";
 import styles from "./index.css";
-import { Layout, Menu, Breadcrumb, Icon } from "antd";
+import { Layout, Menu, Breadcrumb, Icon, Dropdown, Avatar } from "antd";
 import logo from "../../public/logo.png";
 import { Link } from "umi";
 import menuList from "../../mock/menu";
+import { connect } from "umi";
 // import "ant-design-pro/dist/ant-design-pro.css";
 // import "ant-design-pro/lib/Login/style/css"
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
+//inject user state and logout method
+@connect(
+  (state) => ({
+    userinfo: state.user,
+  }),
+  {
+    logout: () => ({ type: "user/logout" }), //action is namespace + reducer
+  }
+)
 export default class index extends Component {
   state = {
     siderMenu: [],
@@ -33,6 +43,12 @@ export default class index extends Component {
   };
 
   render() {
+    const menu = (
+      <Menu>
+        <Menu.Item>User Center</Menu.Item>
+        <Menu.Item onClick={() => this.props.logout()}>Log Out</Menu.Item>
+      </Menu>
+    );
     const routename = "/" + this.props.location.pathname.split("/")[1];
     const selectedKeys = [routename];
     return (
@@ -63,6 +79,15 @@ export default class index extends Component {
                 </Link>
               </Menu.Item>
             </Menu>
+            <div className={styles.user}>
+              <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link" href="#">
+                  <Avatar size="large" src={this.props.userinfo.userimg} />
+                  {this.props.userinfo.username}
+                  <Icon type="down" />
+                </a>
+              </Dropdown>
+            </div>
           </Header>
           <Layout className={styles.content}>
             <Sider

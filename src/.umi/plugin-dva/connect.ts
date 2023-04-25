@@ -7,6 +7,7 @@ import { match } from 'react-router-dom';
 import { Location, LocationState, History } from 'history';
 
 export * from '/Users/renxianggao/Desktop/UmiReact/src/models/goods';
+export * from '/Users/renxianggao/Desktop/UmiReact/src/models/user';
 
 export interface Action<T = any> {
   type: T
