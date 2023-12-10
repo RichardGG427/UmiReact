@@ -28,4 +28,6 @@ username:richard password:123
 user role
 username:tim password:123
 
+Developed by Richard Gao
+
 
