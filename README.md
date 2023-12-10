@@ -1,22 +1,22 @@
 # UmiReact
 ## Prerequisites
-```
+
 1.Git
-```
+
 2.Node: any 16.x version starting with v16.0.0 or greater
-```
+
 3.npm
-```
+
 4.A clone of the UmiReact repo on your local machine
-```
+
 5.umi @3.5.40
-```
+
 6.ant-design-pro @2.3.2
-```
+
 7.antd @3.26.2
-```
+
 8.axios @1.3.5
-```
+
 
 ## Installation
 
